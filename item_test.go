@@ -1,5 +1,7 @@
 package gildedrose
 
+import "testing"
+
 var tests = []struct {
 	name            string
 	description     string
@@ -42,15 +44,15 @@ var tests = []struct {
 	// {"Conjured Mana Cake", "after sell date at zero quality", -10, 0, -11, 0},
 }
 
-//func TestGildedRose(t *testing.T) {
-//	for _, tt := range tests {
-//		item := New(tt.name, tt.days, tt.quality)
-//		UpdateQuality(item)
-//		//if item.quality != tt.expectedQuality {
-//		//	t.Errorf("\n%s %s\nexpected quality: %d\nactual quality: %d", tt.name, tt.description, tt.expectedQuality, item.quality)
-//		//}
-//		//if item.days != tt.expectedDays {
-//		//	t.Errorf("\n%s %s\nexpected days left: %d\nactual days left: %d", tt.name, tt.description, tt.expectedDays, item.days)
-//		//}
-//	}
-//}
+func TestGildedRose(t *testing.T) {
+	for _, tt := range tests {
+		item := New(tt.name, tt.days, tt.quality)
+		UpdateQuality(item)
+		if item.quality != tt.expectedQuality {
+			t.Errorf("\n%s %s\nexpected quality: %d\nactual quality: %d", tt.name, tt.description, tt.expectedQuality, item.quality)
+		}
+		if item.days != tt.expectedDays {
+			t.Errorf("\n%s %s\nexpected days left: %d\nactual days left: %d", tt.name, tt.description, tt.expectedDays, item.days)
+		}
+	}
+}
